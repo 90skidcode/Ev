@@ -1,0 +1,81 @@
+<table>
+    <thead hidden>
+        <tr>
+            <td>name</td>
+            <td>Location</td>
+            <td>Access</td>
+            <td>City</td>
+            <td>Postcode</td>
+            <td>operator</td>
+            <td>charging type</td>
+            <td>hours</td>
+            <td>TFL</td>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    let html = '';
+    $.getJSON("fr-1.json", function(data) {
+        $.each(data.features, function(index, value) {
+            let p = value.properties;
+
+            //console.log(i + ": " + v);
+            let r = randomString(16, 'aA');
+            html = `<tr>
+                <td>${clear_null(p.site_name)}</td>
+                <td>${clear_null(p.location)}</td>
+                <td>${clear_null(p.access)}</td>
+                <td class="${r}">${(!p.postcode)? '' :getcity(p.postcode, r)}</td>
+                <td>${clear_null(p.postcode)}</td>
+                <td>${clear_null(p.operator)}</td>
+                <td>${clear_null(p.site_type)}</td>
+                <td>${clear_null(p.operation_time)}</td>
+                <td>${clear_null(p.operator_type)}</td> 
+            </tr>`;
+
+            $('tbody').append(html);
+        });
+
+    });
+
+    /**
+     * Ramdom String 
+     * @param {*} length Eg : 16
+     * @param {*} chars Eg: 'aA' , '#aA' , '#A!'
+     */
+
+    function randomString(length, chars) {
+        var mask = '';
+        if (chars.indexOf('a') > -1) mask += 'abcdefghijklmnopqrstuvwxyz';
+        if (chars.indexOf('A') > -1) mask += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        if (chars.indexOf('#') > -1) mask += '0123456789';
+        if (chars.indexOf('!') > -1) mask += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
+        var result = '';
+        for (var i = length; i > 0; --i) result += mask[Math.floor(Math.random() * mask.length)];
+        return result;
+    }
+
+    function clear_null(params) {
+        console.log(params);
+        if (!params || params == 'null' || params == null)
+            return ' ';
+        else
+
+            return params;
+    }
+
+    function getcity(params, r) {
+        if (params) {
+            $.get('https://api.postcodes.io/postcodes/' + params, function(params) {
+                $("." + r).html(params.result.region);
+            })
+        } else {
+            $("." + r).html(' ');
+        }
+
+    }
+</script>

@@ -1,0 +1,75 @@
+<table>
+    <thead hidden>
+        <tr>
+            <td>name</td>
+            <td>Location</td>
+            <td>Access</td>
+            <td>City</td>
+            <td>Postcode</td>
+            <td>operator</td>
+            <td>charging type</td>
+            <td>hours</td>
+            <td>TFL</td>
+        </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+</table>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script>
+    let html = '';
+    $.getJSON("fr-1.json", function(data) {
+        $.each(data, function(index, value) {
+            let p = value;
+
+            //console.log(i + ": " + v);
+            let r = randomString(16, 'aA');
+            html += `<tr>`
+            $.each(value, function(i, v) {
+                html += `<td>${v}</td>`;
+            })
+            html += `</td>`;
+
+
+        });
+        $('tbody').append(html);
+    });
+
+    /**
+     * Ramdom String 
+     * @param {*} length Eg : 16
+     * @param {*} chars Eg: 'aA' , '#aA' , '#A!'
+     */
+
+    function randomString(length, chars) {
+        var mask = '';
+        if (chars.indexOf('a') > -1) mask += 'abcdefghijklmnopqrstuvwxyz';
+        if (chars.indexOf('A') > -1) mask += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        if (chars.indexOf('#') > -1) mask += '0123456789';
+        if (chars.indexOf('!') > -1) mask += '~`!@#$%^&*()_+-={}[]:";\'<>?,./|\\';
+        var result = '';
+        for (var i = length; i > 0; --i) result += mask[Math.floor(Math.random() * mask.length)];
+        return result;
+    }
+
+    function clear_null(params) {
+        console.log(params);
+        if (!params || params == 'null' || params == null)
+            return ' ';
+        else
+
+            return params;
+    }
+
+    function getcity(params, r) {
+        if (params) {
+            $.get('https://api.postcodes.io/postcodes/' + params, function(params) {
+                $("." + r).html(params.result.region);
+            })
+        } else {
+            $("." + r).html(' ');
+        }
+
+    }
+</script>

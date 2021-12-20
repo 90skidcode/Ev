@@ -1,0 +1,423 @@
+<table>
+  <thead hidden>
+    <tr>
+      <td>name</td>
+      <td>Location</td>
+      <td>Access</td>
+      <td>City</td>
+      <td>Postcode</td>
+      <td>operator</td>
+      <td>charging type</td>
+      <td>hours</td>
+      <td>TFL</td>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+<script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"
+></script>
+<script>
+  let html = "";
+
+  var a = [
+    {
+      id: "1ab9106c-7d6f-487a-b86b-e1ba447079f4",
+      type: "Rotary_Club",
+      name: "Abilene Southwest",
+      fullName: "Rotary Club of Abilene Southwest, Texas, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 32.453593,
+            longitude: -99.735467,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Abilene",
+            state: "Texas",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description: "Beehive Restaurant & Saloon",
+          xRiLanguageId: null,
+          xRiLanguageName: null,
+          xRiTime: "12:00",
+          xRiWeekday: "Tuesday",
+          categories: ["PHYSICAL"],
+          comment: ["Request a Zoom link if you cannot attend in person."],
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+    {
+      id: "612dd7c0-51fc-44d8-945d-895f193b79f4",
+      type: "Rotary_Club",
+      name: "Abilene Wednesday",
+      fullName: "Rotary Club of Abilene Wednesday, Texas, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 32.40358,
+            longitude: -99.738854,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Abilene",
+            state: "Texas",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description: "Abilene Country Club",
+          xRiLanguageId: null,
+          xRiLanguageName: null,
+          xRiTime: "12:00",
+          xRiWeekday: "Wednesday",
+          categories: ["PHYSICAL"],
+          comment: null,
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+    {
+      id: "5f8ef4b1-1496-401e-b253-8878353e79f4",
+      type: "Rotary_Club",
+      name: "Abingdon",
+      fullName: "Rotary Club of Abingdon, Illinois, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 40.797344,
+            longitude: -90.4023819,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Abingdon",
+            state: "Illinois",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description:
+            "Abbe Lanes Restaurant, Meeting twice per month. Check our Facebook page for meeting dates.",
+          xRiLanguageId: null,
+          xRiLanguageName: null,
+          xRiTime: "18:15",
+          xRiWeekday: "Wednesday",
+          categories: ["PHYSICAL"],
+          comment: null,
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+    {
+      id: "0eead446-6633-48c7-bfd2-7c92a19979f4",
+      type: "Rotary_Club",
+      name: "Abingdon",
+      fullName: "Rotary Club of Abingdon, Virginia, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 36.692402,
+            longitude: -81.962253,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Abingdon",
+            state: "Virginia",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description: "Glenrochie Country Club",
+          xRiLanguageId: null,
+          xRiLanguageName: null,
+          xRiTime: "12:00",
+          xRiWeekday: "Friday",
+          categories: ["PHYSICAL"],
+          comment: null,
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+    {
+      id: "218b4c1f-70ac-49ca-aaf8-aa88676679f4",
+      type: "Rotary_Club",
+      name: "Abington",
+      fullName: "Rotary Club of Abington, Pennsylvania, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 40.1248371,
+            longitude: -75.117823,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Abington",
+            state: "Pennsylvania",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description: "Kitchen Bar - Abington",
+          xRiLanguageId: null,
+          xRiLanguageName: null,
+          xRiTime: "07:45",
+          xRiWeekday: "Thursday",
+          categories: ["PHYSICAL"],
+          comment: null,
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+    {
+      id: "830601e3-b884-4955-bfbf-731bc75a79f4",
+      type: "Rotary_Club",
+      name: "Abington",
+      fullName: "Rotary Club of Abington, Massachusetts, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 42.1105021,
+            longitude: -70.9318777,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Abington",
+            state: "Massachusetts",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description: "D'Ann's Restaurant",
+          xRiLanguageId: null,
+          xRiLanguageName: null,
+          xRiTime: "18:30",
+          xRiWeekday: "Tuesday",
+          categories: ["PHYSICAL"],
+          comment: ["1st Tues of monthMartin's, 205 North Ave, Abington"],
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+    {
+      id: "99878d27-7650-432f-801d-0a7f599f79f4",
+      type: "Rotary_Club",
+      name: "Abingtons, The-Clarks Summit",
+      fullName:
+        "Rotary Club of Abingtons, The-Clarks Summit, Pennsylvania, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 41.4918873,
+            longitude: -75.7047216,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Clark Summit",
+            state: "Pennsylvania",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description: "Clarks Summit Fire Station #1",
+          xRiLanguageId: null,
+          xRiLanguageName: null,
+          xRiTime: "12:10",
+          xRiWeekday: "Thursday",
+          categories: ["PHYSICAL"],
+          comment: null,
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+    {
+      id: "40a35fcd-2227-4642-be1c-59f3c16979f4",
+      type: "Rotary_Club",
+      name: "Absecon-Galloway",
+      fullName: "Rotary Club of Absecon-Galloway, New Jersey, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 39.426258,
+            longitude: -74.5027939,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Absecon",
+            state: "New Jersey",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description: "Phoenix Diner",
+          xRiLanguageId: null,
+          xRiLanguageName: null,
+          xRiTime: "07:30",
+          xRiWeekday: "Thursday",
+          categories: ["PHYSICAL"],
+          comment: ["2nd & 4th only"],
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+    {
+      id: "53cef5d8-6961-47ff-9949-de568d5a79f4",
+      type: "Rotary_Club",
+      name: "Ackley",
+      fullName: "Rotary Club of Ackley, Iowa, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 42.5539496,
+            longitude: -93.0536879,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Ackley",
+            state: "Iowa",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description: "Pizza Ranch",
+          xRiLanguageId: null,
+          xRiLanguageName: null,
+          xRiTime: "12:00",
+          xRiWeekday: "Wednesday",
+          categories: ["PHYSICAL"],
+          comment: null,
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+    {
+      id: "3467b15b-9cb6-4bbf-8137-2dfce18c79f4",
+      type: "Rotary_Club",
+      name: "Acton-Boxborough",
+      fullName: "Rotary Club of Acton-Boxborough, Massachusetts, United States",
+      meetings: [
+        {
+          geo: {
+            latitude: 42.4817944,
+            longitude: -71.5455032,
+            __typename: "GeoLocation",
+          },
+          xRiAddress: {
+            city: "Boxborough",
+            state: "Massachusetts",
+            country: "United States",
+            __typename: "BaseAddress",
+          },
+          description: "Boxborough Regency",
+          xRiLanguageId: "eng",
+          xRiLanguageName: "English",
+          xRiTime: "12:15",
+          xRiWeekday: "Wednesday",
+          categories: ["PHYSICAL"],
+          comment: null,
+          url: null,
+          __typename: "ClubSearchResultMeeting",
+        },
+      ],
+      __typename: "ClubSearchResult",
+    },
+  ];
+
+  var b = [];
+
+  a.forEach((e) => {
+    console.log(e);
+
+    let c = e;
+    fetch("https://my-api.rotary.org/api/graphql", {
+      headers: {
+        accept: "*/*",
+        "accept-language": "en-US,en;q=0.9",
+        "content-type": "application/json",
+        "language-context": "en",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-site",
+        "sec-gpc": "1",
+      },
+      referrer: "https://my.rotary.org/",
+      referrerPolicy: "strict-origin-when-cross-origin",
+      body: `{\"operationName\":\"fetchClubDetails\",\"variables\":{\"clubId\":\"${e.id}\",\"termStartYear\":2021},\"query\":\"query fetchClubDetails($clubId: String!, $termStartYear: Int) {\\n  club: clubById(clubId: $clubId) {\\n    riClubId\\n    clubName\\n    clubType\\n    district\\n    charteredDate\\n    primaryFax {\\n      number\\n      extension\\n      countryId\\n      __typename\\n    }\\n    primaryEmail\\n    primaryPhone {\\n      number\\n      extension\\n      countryId\\n      __typename\\n    }\\n    primaryWebsite\\n    officialLanguage {\\n      name\\n      __typename\\n    }\\n    mailingAddress {\\n      lineOne\\n      lineTwo\\n      lineThree\\n      country\\n      countryId\\n      city\\n      state\\n      stateId\\n      postalCode\\n      __typename\\n    }\\n    physicalLocation {\\n      state\\n      internationalProvince\\n      country\\n      __typename\\n    }\\n    leaders(termStartYear: $termStartYear) {\\n      primaryEmail\\n      individualName\\n      startDate\\n      endDate\\n      role {\\n        name\\n        __typename\\n      }\\n      __typename\\n    }\\n    childClubRelationships {\\n      clubName\\n      childClubId\\n      type\\n      __typename\\n    }\\n    parentClubRelationships {\\n      clubName\\n      parentClubId\\n      type\\n      __typename\\n    }\\n    meetings {\\n      ...MeetingFields\\n      __typename\\n    }\\n    operationsAccess {\\n      club\\n      memberships\\n      leaderships\\n      financesGoalsReports\\n      __typename\\n    }\\n    vendors {\\n      vendorName\\n      startDate\\n      __typename\\n    }\\n    __typename\\n  }\\n}\\n\\nfragment MeetingFields on Meeting {\\n  name\\n  language\\n  languageId\\n  comment\\n  time\\n  weekday\\n  frequency\\n  type\\n  locationVaries\\n  locationNameOrDetail\\n  address {\\n    lineOne\\n    lineTwo\\n    lineThree\\n    country\\n    countryId\\n    city\\n    state\\n    stateId\\n    postalCode\\n    internationalProvince\\n    __typename\\n  }\\n  detailForJoiningRemotely\\n  onlineLocation\\n  latitude\\n  longitude\\n  __typename\\n}\\n\"}`,
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+    }).then(function (response) {
+      // Examine the text in the response
+      response.json().then(function (data) {
+        console.log(c);
+        c["new"] = data.data.club;
+        b.push(c);
+      });
+    });
+  });
+
+  console.log(b);
+
+  $.getJSON("fr-1.json", function (data) {
+    $.each(data, function (index, value) {
+      let p = value;
+
+      //console.log(i + ": " + v);
+      let r = randomString(16, "aA");
+      html += `<tr>`;
+      $.each(value, function (i, v) {
+        html += `<td>${v}</td>`;
+      });
+      html += `</td>`;
+    });
+    $("tbody").append(html);
+  });
+
+  /**
+   * Ramdom String
+   * @param {*} length Eg : 16
+   * @param {*} chars Eg: 'aA' , '#aA' , '#A!'
+   */
+
+  function randomString(length, chars) {
+    var mask = "";
+    if (chars.indexOf("a") > -1) mask += "abcdefghijklmnopqrstuvwxyz";
+    if (chars.indexOf("A") > -1) mask += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (chars.indexOf("#") > -1) mask += "0123456789";
+    if (chars.indexOf("!") > -1) mask += "~`!@#$%^&*()_+-={}[]:\";'<>?,./|\\";
+    var result = "";
+    for (var i = length; i > 0; --i)
+      result += mask[Math.floor(Math.random() * mask.length)];
+    return result;
+  }
+
+  function clear_null(params) {
+    console.log(params);
+    if (!params || params == "null" || params == null) return " ";
+    else return params;
+  }
+
+  function getcity(params, r) {
+    if (params) {
+      $.get("https://api.postcodes.io/postcodes/" + params, function (params) {
+        $("." + r).html(params.result.region);
+      });
+    } else {
+      $("." + r).html(" ");
+    }
+  }
+</script>
